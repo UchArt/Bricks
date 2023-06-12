@@ -42,20 +42,20 @@ public class Bricks {
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList<String> combinedList = new ArrayList<>();
 
-        File file = new File("plik.txt");
-        Scanner scanner = new Scanner(file);
+        Scanner scanner = new Scanner(System.in);
 
-        while (scanner.hasNextLine()) {
+        do {
             String input = scanner.nextLine();
-            input = input.toUpperCase();
 
+            input = input.toUpperCase();
             if (input.length() != 6 || !Character.isDigit(input.charAt(0)) || input.charAt(1) != ':' || !input.substring(2).matches("[A-O]{4}")) {
-                System.out.println("Nieprawidłowy kod! Wprowadź kod składający się tylko ze znaków ABCDEFGHIJKLMNO.");
                 continue;
             }
             combinedList.add(input);
-        }
+        } while (!scanner.nextLine().equals(""));
+
         scanner.close();
+
 
         ArrayList<String> box = new ArrayList<>();
         ArrayList<String> instruction = new ArrayList<>();
@@ -197,11 +197,11 @@ public class Bricks {
         int bricksRemainingInBox = box.size();
         int buildingsCompleted = instructionsImplementedPhase1.size() + instructionsImplementedPhase2.size();
 
-        System.out.println("Liczba klocków użytych w etapie I: " + totalBricksUsedPhase1);
-        System.out.println("Liczba klocków użytych w etapie II: " + totalBricksUsedPhase2);
-        System.out.println("Liczba klocków, które pozostały w pudełku po zakończeniu budowania: " + bricksRemainingInBox);
-        System.out.println("Łączna liczba klocków, których brakowało w pudełku podczas realizacji poszczególnych instrukcji: " + missingBricksCount);
-        System.out.println("Liczba budowli, które udało się zbudować: " + buildingsCompleted);
-        System.out.println("Liczba budowli, których nie udało się zbudować: " + notImplementedCount);
+        System.out.println(totalBricksUsedPhase1);
+        System.out.println(totalBricksUsedPhase2);
+        System.out.println(bricksRemainingInBox);
+        System.out.println(missingBricksCount);
+        System.out.println(buildingsCompleted);
+        System.out.println(notImplementedCount);
     }
 }
