@@ -14,6 +14,8 @@ Based on them, we will try to build instructions that begin with the number "1".
 
 public class Bricks {
 
+
+
     //is used to count the occurrences of a given element in a list
     private static int countOccurrenc(List<String> list, String element) {
         int count = 0;
@@ -44,15 +46,16 @@ public class Bricks {
 
         Scanner scanner = new Scanner(System.in);
 
+        String input;
         do {
-            String input = scanner.nextLine();
+            input = scanner.nextLine();
 
             input = input.toUpperCase();
             if (input.length() != 6 || !Character.isDigit(input.charAt(0)) || input.charAt(1) != ':' || !input.substring(2).matches("[A-O]{4}")) {
                 continue;
             }
             combinedList.add(input);
-        } while (!scanner.nextLine().equals(""));
+        } while (!input.isEmpty());
 
         scanner.close();
 
